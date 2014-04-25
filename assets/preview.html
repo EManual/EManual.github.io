@@ -76,9 +76,25 @@
 </div>
 <script>
     $(document).ready(function () {
-        $.get('../java-lang/advance/Java多线程/' + '0000-线程简介.md', function (result) {
-            $("#content").html(marked(result));
-        });
+        var get_article_path = function () {
+            var str = location.search;
+            strs = str.replace('?', '').split('&')
+            for (var i = 0; i < strs.length; i++) {
+                if (strs[i].indexOf('path') != -1) {
+                    return strs[i].split('=')[1];
+                }
+            }
+            return null;
+        }
+        var article_path = get_article_path()
+        if (article_path != null) {
+            $.get('../' + article_path, function (result) {
+                $("#content").html(marked(result));
+            });
+        } else {
+            $("#content").html(marked('No Content'));
+        }
+
     });
 </script>
 </body>
