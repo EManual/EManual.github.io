@@ -24,6 +24,20 @@ ignore = [
 ]
 
 
+def get_current_timestamp():
+    return long(time.time() * 1000)
+
+
+def create_dir_info_json(cwd, dirs):
+    json_string = json.dumps({
+        'result': dirs,
+        'last_motify': get_current_timestamp()
+    })
+    with open(os.path.join(cwd, 'info.json'), mode='w') as f:
+        f.write(json_string)
+    print "created_dir_info_json ---> ", os.path.join(cwd, 'info.json')
+
+
 def generation(page, l, cwd):
     file_name = cwd + os.path.sep + str(page) + ".json"
     with open(file_name, mode="w") as f:
@@ -73,20 +87,27 @@ def main_work(cwd):
     generation(page, raw[(page - 1) * limit:], cwd)
 
     with open(cwd + os.path.sep + 'info.json', mode='w') as f:
-        f.write(json.dumps({'pages': page, 'last_motify': long(time.time() * 1000)}))
+        f.write(json.dumps({'pages': page,
+                            'last_motify': get_current_timestamp()}))
     print 'total=', size, 'pages=', page
     print "Build finished."
     print ""
 
 
 def main(cwd):
+    """
+     cwd = [program lang]/kind*/....
+    """
     cwd_list = list(os.listdir(cwd))
     print 'deal with dir: ', cwd
+    dirs  = []
     for file_name in cwd_list:
         if os.path.isdir(os.path.join(cwd, file_name)):
             print os.path.join(cwd, file_name)
             main_work(os.path.join(cwd, file_name))
-
+            dirs.append(file_name.decode('gbk'))
+    print("in -->", cwd, " create-->", dirs)
+    create_dir_info_json(cwd, dirs)
     print 'finish: ', cwd
 
 
@@ -95,7 +116,10 @@ def t(d):
 
 
 if __name__ == "__main__":
-    # main()
-    #[os.path.isdir(p) for p in os.listdir(os.getcwd())]
+    #deal with the directory below [program_lang] (java/)
+    dirs = []
     for f in filter(lambda _dir: os.path.isdir(_dir), os.listdir(os.getcwd())):
         main(os.path.join(os.getcwd(), f))
+        dirs.append(f)
+    print("in -->", os.getcwd(), " create-->", dirs)
+    create_dir_info_json(os.getcwd(),dirs)
