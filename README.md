@@ -4,7 +4,7 @@ EManual
 EManual makes you learn programming language more  easier.Currently, it focuse on **Java and Android**
 
 
-run
+build the lastest book sites
 ---
 ```shell
 
@@ -13,7 +13,7 @@ run
 
 File Structure
 ---
-```file
+```xml
 
     ./
      ----[program lang]/
@@ -41,6 +41,8 @@ File Structure
 
 * **[program lang],kind1 , topic1 All are `Directory`**
   typically, it should include `info.json` in current directory with follow format:
+
+  **info.json**
   ```json
 
 
@@ -53,7 +55,8 @@ File Structure
 
 * **[num]-[title].md** is the content file
   typically, it should include `info.json` and `[num of page].json` below current directory with follow format：
-  info.json
+
+  **info.json**
   ```json
 
 
@@ -64,7 +67,7 @@ File Structure
 
   ```
 
-  [num of page].json
+  **[num of page].json**
   ```json
 
 
