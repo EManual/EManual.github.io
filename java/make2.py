@@ -42,8 +42,11 @@ def generation(page, l, cwd):
     file_name = cwd + os.path.sep + str(page) + ".json"
     with open(file_name, mode="w") as f:
         if len(l) > 0:
+            res = []
+            for f_name in l:
+                res.append(f_name.decode('gbk'))
             f.write(json.dumps({
-                'result': ','.join(l).decode('gbk').split(',')
+                'result': res
             }))
         else:
             f.write(json.dumps({'result': []}))
