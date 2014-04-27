@@ -1,0 +1,67 @@
+* Frames
+1)是Window的子类
+2)具有标题和缩放角
+3)从容器继承并以add方式添加组件
+4)能以字符串规定的标题来创建不可见框架对象
+5)能将BorderLayout当做缺省布局管理器
+6)用setLayout方式来改变缺省布局管理器
+7)Frame是Window的一个子类。它是带有标题和缩放角的窗口。它继承于Java.awt.Container，因此，可以用add()方式来给框架添加组件。框架的缺省布局管理器就是Border Layout。它可以用setLayout()方式来改变
+8)框架类中的构造程序 Frame(String)用由String规定的标题来创建一个新的不可见的框架对象。当它还处于不可见状态时，将所有组件添加到框架中。
+查看JDk Doc文档中的Frame类的构造方法
+```java  
+public Frame(String title)
+     throws HeadlessException
+```
+这个方法中title就是显示的标题。
+程序如下所示：
+```java  
+package com.ahuier.awt;
+
+import java.awt.Color;
+import java.awt.Frame;
+
+public class MyFrame extends Frame{
+	public MyFrame(String title){
+		super(title);
+	}
+	public static void main(String[] args){
+		MyFrame frame = new MyFrame("我的第一个GUI程序");
+		frame.setSize(500, 500); //设置宽度和高度
+		frame.setBackground(Color.BLUE); //设置背景色
+		frame.setVisible(true); //设置可见
+	}
+}
+```
+* Panels
+1)为组件提供空间
+2)允许子面板拥有自己的布局管理器
+3)以add方法添加组件
+(1)象Frames一样，Panels提供空间来连接任何GUI组件，包括其它面板。每个面板都可以有它自己的布管理程序。
+(2)一旦一个面板对象被创建，为了能看得见，它必须添加到窗口或框架对象上。用Container类中的add()方式可以做到这一点。
+```java  
+package com.ahuier.awt;
+
+import java.awt.Color;
+import java.awt.Frame;
+import java.awt.Panel;
+
+public class FrameWithPanel extends Frame{
+	public FrameWithPanel(String title){
+		super(title);
+	}
+	public static void main(String[] args) {
+		FrameWithPanel frame = new FrameWithPanel("frame with panel");
+		Panel panel = new Panel();
+		
+		frame.setSize(200,200);
+		frame.setBackground(Color.BLACK);
+		frame.setLayout(null); //制定布局管理器，我们设置为空，也就是不使用它自带的布局管理器
+		
+		panel.setSize(100, 100);
+		panel.setBackground(Color.YELLOW);
+		
+		frame.add(panel); //将panel设置到frame上
+		frame.setVisible(true);
+	}
+}
+```
