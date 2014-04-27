@@ -86,7 +86,8 @@
             }
             return null;
         }
-        var article_path = get_article_path()
+//        var article_path = get_article_path()
+        var article_path='java/test/Java基础/0000-Java简介及开发环境配置.md'
         if (article_path != null) {
             $.get('../' + article_path, function (result) {
                 $("#content").html(marked(result));

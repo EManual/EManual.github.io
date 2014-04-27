@@ -6,13 +6,13 @@ Java中的集合（Collection）有两类，一类是List，再有一类是Set�
 hashCode方法可以这样理解：它返回的就是根据对象的内存地址换算出的一个值。这样一来，当集合要添加新的元素时，先调用这个元素的hashCode方法，就一下子能定位到它应该放置的物理位置上。如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了，就调用它的equals方法与新元素进行比较，相同的话就不存了，不相同就散列其它的地址。这样一来实际调用equals方法的次数就大大降低了，几乎只需要一两次。
 (2)首先，equals()和hashcode()这两个方法都是从object类中继承过来的。 
 equals()方法在object类中定义如下： 
-[code=java]
+```java  
 public boolean equals(Object obj) { 
 	return (this == obj); 
 } 
-[/code]
+```
 很明显是对两个对象的地址值进行的比较（即比较引用是否相同）。但是我们必需清楚，当String、Math、还有Integer、Double。。。。等这些封装类在使用equals()方法时，已经覆盖了object类的equals（）方法。比 如在String类中如下： 
-[code=java]
+```java  
 public boolean equals(Object anObject) { 
 	if (this == anObject) { 
 	   return true; 
@@ -34,7 +34,7 @@ public boolean equals(Object anObject) {
 	} 
 	return false; 
 } 
-[/code]
+```
 很明显，这是进行的内容比较，而已经不再是地址的比较。依次类推Double、Integer、Math。。。。等等这些类都是重写了equals()方法的，从而进行的是内容的比较。
 我们还应该注意，Java语言对equals()的要求如下，这些要求是必须遵循的： 
 1) 对称性：如果x.equals(y)返回是"true"，那么y.equals(x)也应该返回是"true"。 
@@ -44,11 +44,11 @@ public boolean equals(Object anObject) {
 5) 任何情况下，x.equals(null)，永远返回是"false"；x.equals(和x不同类型的对象)永远返回是"false"。 
 以上这五点是重写equals()方法时，必须遵守的准则，如果违反会出现意想不到的结果，请大家一定要遵守。
 (3)其次，hashcode() 方法，在object类中定义如下： 
-[code=java]
+```java  
 public native int hashCode(); 
-[/code]
+```
 说明它是一个本地方法，它的实现是根据本地机器相关的。当然我们可以在自己写的类中覆盖hashcode()方法，比如String、Integer、Double等这些类都是覆盖了hashcode()方法的。例如在String类中定义的hashcode()方法如下： 
-[code=java]
+```java  
 public int hashCode() { 
 	int h = hash; 
 	if (h == 0) { 
@@ -63,11 +63,11 @@ public int hashCode() {
 	} 
 	return h; 
 } 
-[/code]
+```
 解释一下这个程序（String的API中写到）： 
-[code=java]
+```java  
 s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1] 
-[/code]
+```
 使用 int 算法，这里 s[i] 是字符串的第 i 个字符，n 是字符串的长度，^ 表示求幂。（空字符串的哈希码为 0。)
 (4)谈到hashcode()和equals()就不能不说到hashset,hashmap,hashtable中的使用，具体是怎样呢，请看如下分析：
 Hashset是继承Set接口，Set接口又实现Collection接口，这是层次关系。那么hashset是根据什么原理来存取对象的呢？ 
@@ -79,7 +79,7 @@ Hashset是继承Set接口，Set接口又实现Collection接口，这是层次关
 如果相等，认为两个对象相等(equals()是判断两个对象是否相等的关键) 。
 为什么是两条准则，难道用第一条不行吗？不行，因为前面已经说了，hashcode()相等时，equals()方法也可能不等，所以必须用第2条准则进行限制，才能保证加入的为非重复元素。 
 比如下面的代码：
-[code=java]
+```java  
 public static void main(String[] args) {
     String s1 = new String("zhangsan");
     String s2 = new String("zhangsan");
@@ -92,11 +92,11 @@ public static void main(String[] args) {
     hashset.add(s2);
     System.out.println(hashset.size());//1
 }
-[/code]
+```
 再看如下一些示例：
 几个很简单的示例，说明一些很简单的道理
 例一:
-[code=java]
+```java  
 package com.itsoft;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -120,9 +120,9 @@ public static void main(String[] args) {
     System.out.println(collection.size());//4，结果输出4，以为List中可以有重复元素，而且是有序的。
 }
 }
-[/code]
+```
 例二(在上例的基础上稍作修改把ArrayList改为HashSet):
-[code=java]
+```java  
 package com.itsoft;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -146,10 +146,10 @@ public static void main(String[] args) {
     collection.add(p1);
     System.out.println(collection.size());//3，因为HashSet中不会保存重复的对象，每添加一个元素，先判断，再添加，如果已经存在，那么就不在添加，无序的！
 }
-[/code]
+```
 }
 例三(如果我们需要p1和p3相等呢？就必须重新hashcode()和equal()方法):
-[code=java]
+```java  
 package com.itsoft;
 import java.util.Collection;
 import java.util.HashSet;
@@ -196,9 +196,9 @@ public static void main(String[] args) {
     System.out.println(collection.size());//输出2，此时p1和p3是相等的
 }
 }
-[/code]
+```
 例四(如果我们把hashcode()方法去掉看下):
-[code=java]
+```java  
 package com.itsoft;
 import java.util.Collection;
 import java.util.HashSet;
@@ -238,7 +238,7 @@ public static void main(String[] args) {
     //原因：虽然此时p1和p2的equals相等，但是他们的hashcode不相等，所以它们就存储在不同区域，在这两个不同的区域存储着相同的东西，查找的时候只在一个区域查找，就被放进去了。
 }
 }
-[/code]
+```
 注：为了避免第四种情况的发生，通常情况下，一个实例的两个对象equals相同，那么他们的hashcode也必须相等，反之，则不成立，当然，只有对象存储在hash算法系列的集合中，hashcode方法才有价值.这样目的就是确保相同的对象存储在相同的位置。
 小结：
 (1)只有类的实例对象要被采用哈希算法进行存储和检索时，这个类才需要按要求覆盖hashCode方法，即使程序可能暂时不会用到当前类的hashCode方法，但是为它提供一个hashCode方法也不会有什么不好，没准以后什么时候又用到这个方法了，所以，通常要求hashCode方法和equals方法一并被同时覆盖。

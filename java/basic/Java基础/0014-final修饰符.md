@@ -1,40 +1,40 @@
 不允许改变，可以修饰变量、方法、类。
-[color=blue]final修饰变量：
+* final修饰变量：
 被final修饰的变量就会变成常量，一旦赋值不能改变。
 常量可以在初始化时直接赋值，也可以在构造方法里赋值，只能在这两种方法里二选一，不能不为常量赋值。
 常量不会有默认初始值。
 锁定栈，使栈中的数据不可以改变。
 静态常量只能在初始化时直接赋值。
-[color=blue]final修饰方法：
+* final修饰方法：
 被final修饰的方法将不能被其子类覆盖，保持方法的稳定不能被覆盖。
-[color=blue]final修饰类：
+* final修饰类：
 被final修饰的类将不能被继承。
-[color=blue]final类中的方法也都是final的。
-[color=red]注意：
+* final类中的方法也都是final的。
+* 注意：
 final不能用来修饰构造方法。
-[color=blue]使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？
+* 使用final关键字修饰一个变量时，是引用不能变，还是引用的对象不能变？
 使用final关键字修饰一个变量时，是指引用变量不能变，引用变量所指向的对象中的内容还是可以改变的。例如，对于如下语句：
-[code=java]
+```java  
 	final StringBuffer a=new StringBuffer(“immutable”);
-[/code]
+```
 执行如下语句将报告编译期错误：
-[code=java]
+```java  
 	a=new StringBuffer(“”);
-[/code]
+```
 但是，执行如下语句则可以通过编译：
-[code=java]
+```java  
 	a.append(“ broken!”); 
-[/code]
+```
 有人在定义方法的参数时，可能想采用如下形式来阻止方法内部修改传进来的参数对象：
-[code=java]
+```java  
 public void method(final  StringBuffer  param){
 } 
-[/code]
+```
 实际上，这是办不到的，在该方法内部仍然可以增加如下代码来修改参数对象：
-[code=java]
+```java  
 	param.append(“a”);
-[/code]
-[color=blue]final, finally, finalize的区别：
+```
+* final, finally, finalize的区别：
 final: 用于声明属性，方法和类，分别表示属性不可变，方法不可覆盖，类不可继承。 
 内部类要访问局部变量，局部变量必须定义成final类型，例如，一段代码……
 finally：是异常处理语句结构的一部分，是异常的统一出口,表示总是执行。

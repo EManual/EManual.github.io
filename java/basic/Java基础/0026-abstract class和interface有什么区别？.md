@@ -10,7 +10,7 @@
 7.一个类可以实现多个接口，但只能继承一个抽象类。
 下面接着再说说两者在应用上的区别：
 接口更多的是在系统架构设计方法发挥作用，主要用于定义模块之间的通信契约。而抽象类在代码实现方面发挥作用，可以实现代码的重用，例如，模板方法设计模式是抽象类的一个典型应用，假设某个项目的所有Servlet类都要用相同的方式进行权限判断、记录访问日志和处理异常，那么就可以定义一个抽象的基类，让所有的Servlet都继承这个抽象基类，在抽象基类的service方法中完成权限判断、记录访问日志和处理异常的代码，在各个子类中只是完成各自的业务逻辑代码，伪代码如下：
-[code=java]
+```java  
 public abstract class BaseServlet extends HttpServlet{
 		public final void service(HttpServletRequest request, HttpServletResponse response) throws IOExcetion,ServletException{
 			记录访问日志
@@ -32,6 +32,6 @@ protected void doService(HttpServletRequest request, HttpServletResponse respons
 			本Servlet只处理的具体业务逻辑代码
 		} 
 }
-[/code]
+```
 父类方法中间的某段代码不确定，留给子类干，就用模板方法设计模式。
 备注：这道题的思路是先从总体解释抽象类和接口的基本概念，然后再比较两者的语法细节，最后再说两者的应用区别。比较两者语法细节区别的条理是：先从一个类中的构造方法、普通成员变量和方法（包括抽象方法），静态变量和方法，继承性等6个方面逐一去比较回答，接着从第三者继承的角度的回答，特别是最后用了一个典型的例子来展现自己深厚的技术功底。

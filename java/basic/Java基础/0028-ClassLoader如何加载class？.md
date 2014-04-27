@@ -7,7 +7,7 @@ ClassLoader一个经常出现又让很多人望而却步的词，本文将试图
 每一个自定义ClassLoader都必须继承ClassLoader这个抽象类，而每个ClassLoader都会有一个parent ClassLoader，我们可以看一下ClassLoader这个抽象类中有一个getParent()方法，这个方法用来返回当前ClassLoader的parent，注意，这个parent不是指的被继承的类，而是在实例化该ClassLoader时指定的一个ClassLoader，如果这个parent为null，那么就默认该ClassLoader的parent是bootstrap classloader，这个parent有什么用呢？ 
 我们可以考虑这样一种情况，假设我们自定义了一个ClientDefClassLoader，我们使用这个自定义的ClassLoader加载java.lang.String，那么这里String是否会被这个ClassLoader加载呢？事实上java.lang.String这个类并不是被这个ClientDefClassLoader加载，而是由bootstrap classloader进行加载，为什么会这样？实际上这就是双亲委托模式的原因，因为在任何一个自定义ClassLoader加载一个类之前，它都会先委托它的父亲ClassLoader进行加载，只有当父亲ClassLoader无法加载成功后，才会由自己加载，在上面这个例子里，因为java.lang.String是属于java核心API的一个类，所以当使用ClientDefClassLoader加载它的时候，该ClassLoader会先委托它的父亲ClassLoader进行加载，上面讲过，当ClassLoader的parent为null时，ClassLoader的parent就是bootstrap classloader，所以在ClassLoader的最顶层就是bootstrap classloader，因此最终委托到bootstrap classloader的时候，bootstrap classloader就会返回String的Class。 
 我们来看一下ClassLoader中的一段源代码：
-[code=java] 
+```java   
 protected synchronized Class loadClass(String name, boolean resolve) throws ClassNotFoundException
 {
 	// 首先检查该name指定的class是否有被加载
@@ -31,17 +31,17 @@ protected synchronized Class loadClass(String name, boolean resolve) throws Clas
 	}
 	return c;
 }
-[/code]
+```
 从上面一段代码中，我们可以看出一个类加载的大概过程与之前我所举的例子是一样的，而我们要实现一个自定义类的时候，只需要实现findClass方法即可。 
 为什么要使用这种双亲委托模式呢？ 
 第一个原因就是因为这样可以避免重复加载，当父亲已经加载了该类的时候，就没有必要子ClassLoader再加载一次。 
 第二个原因就是考虑到安全因素，我们试想一下，如果不使用这种委托模式，那我们就可以随时使用自定义的String来动态替代java核心api中定义类型，这样会存在非常大的安全隐患，而双亲委托的方式，就可以避免这种情况，因为String已经在启动时被加载，所以用户自定义类是无法加载一个自定义的ClassLoader。 
 上面对ClassLoader的加载机制进行了大概的介绍，接下来不得不在此讲解一下另外一个和ClassLoader相关的类，那就是Class类，每个被ClassLoader加载的class文件，最终都会以Class类的实例被程序员引用，我们可以把Class类当作是普通类的一个模板，JVM根据这个模板生成对应的实例，最终被程序员所使用。 
 我们看到在Class类中有个静态方法forName，这个方法和ClassLoader中的loadClass方法的目的一样，都是用来加载class的，但是两者在作用上却有所区别。 
-[code=java]
+```java  
 Class<?> loadClass(String name) 
 Class<?> loadClass(String name, boolean resolve) 
-[/code]
+```
 我们看到上面两个方法声明，第二个方法的第二个参数是用于设置加载类的时候是否连接该类，true就连接，否则就不连接。 
 说到连接，不得不在此做一下解释，在JVM加载类的时候，需要经过三个步骤，装载、连接、初始化。装载就是找到相应的class文件，读入JVM，初始化就不用说了，最主要就说说连接。 
 连接分三步，第一步是验证class是否符合规格，第二步是准备，就是为类变量分配内存同时设置默认初始值，第三步就是解释，而这步就是可选的，根据上面loadClass方法的第二个参数来判定是否需要解释，所谓的解释根据《深入JVM》这本书的定义就是根据类中的符号引用查找相应的实体，再把符号引用替换成一个直接引用的过程。有点深奥吧，呵呵，在此就不多做解释了，想具体了解就翻翻《深入JVM吧》，呵呵，再这样一步步解释下去，那就不知道什么时候才能解释得完了。 
