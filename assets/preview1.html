@@ -70,31 +70,24 @@
 </head>
 <body>
 <div class="container-fluid">
-
     <div class="row-fluid" id="content" style="padding-left: 4px;padding-right: 4px;padding-top: 6px"></div>
-
 </div>
 <script>
+    console.log("准备去干活啦");
     $(document).ready(function () {
-        var get_article_path = function () {
-            var str = location.search;
-            strs = str.replace('?', '').split('&')
-            for (var i = 0; i < strs.length; i++) {
-                if (strs[i].indexOf('path') != -1) {
-                    return strs[i].split('=')[1];
-                }
-            }
-            return null;
-        }
-        var article_path = get_article_path()
-        if (article_path != null) {
-            $.get('../' + article_path, function (result) {
+        console.log("准备好了");
+        if (Android.getUrl() != null) {
+            $.get(Android.getUrl(), function (result) {
                 $("#content").html(marked(result));
+                console.log(result);
             });
+        } else if (Android.getContent() != null) {
+            $("#content").html(marked(WebAppInterface.getContent()));
+            console.log(Android.getContent());
         } else {
             $("#content").html(marked('No Content'));
+            console.log('No Content');
         }
-
     });
 </script>
 </body>
