@@ -1,0 +1,2 @@
+HttpSession中可以跟踪并储存用户信息，把值设置到属性中，有2个方法：setAttribute(),getAttrribute()；
+例如：在一个方法中用session.setAttribute(“student”,student);在session中设置一个属性名为student,值为一个名为student的对象。而后可在同一session范围内用getAttribute(“student”)取出该属性，得到student对象。
