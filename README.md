@@ -8,7 +8,7 @@ build the lastest book sites
 ---
 ```shell
 
-    python EManual/java/make.py
+    python EManual/java/make2.py
 ```
 
 File Structure
