@@ -88,7 +88,7 @@
         }
         var article_path = get_article_path()
         if (article_path != null) {
-            $.get('../' + article_path, function (result) {
+            $.get(article_path, function (result) {
                 $("#content").html(marked(result));
             });
         } else {
