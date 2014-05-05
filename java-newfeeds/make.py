@@ -58,7 +58,7 @@ def main_work(cwd):
         for t in l:
             if re.findall(pattern, t):
                 raw.remove(t)
-    raw.sort(reverse=False)
+    raw.sort(reverse=True)
     size = len(raw)
     # print size
     page = 1
