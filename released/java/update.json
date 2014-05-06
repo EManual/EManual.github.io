@@ -1,6 +1,6 @@
 {
-    "versionCode":2,
-    "versionName":"1.1.0",
-    "description":"1.支持语法高亮\n 2.bug fix ",
+    "versionCode":3,
+    "versionName":"1.1.1",
+    "description":"1.支持语法高亮\n2.修复Android 4.2或以上系统无法查看文章",
     "url":"http://emanual.github.io/released/java/EManual_for_Java.apk"
 }
