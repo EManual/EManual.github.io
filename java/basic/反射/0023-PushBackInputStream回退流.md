@@ -1,12 +1,7 @@
 【例子1】
 ```java  
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.PushbackInputStream;
- 
-/**
- * 回退流操作
- * */
+import java.io.ByteArrayInputStream;  import java.io.IOException;   import java.io.PushbackInputStream;  
+/**   * 回退流操作   */  
 public class PushBackInputStreamDemo{
     public static void main(String[] args) throws IOException{
         String str = "hello,rollenholt";
@@ -31,9 +26,7 @@ public class PushBackInputStreamDemo{
 hello(回退,) rollenholt
 【例子2】
 ```java  
-/**
- * 取得本地的默认编码
- * */
+/**   * 取得本地的默认编码   */  
 public class CharSetDemo{
     public static void main(String[] args){
         System.out.println("系统默认编码为：" + System.getProperty("file.encoding"));
@@ -44,14 +37,9 @@ public class CharSetDemo{
 系统默认编码为：GBK
 【例子3】乱码的产生：
 ```java  
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.File;   import java.io.FileOutputStream;    import java.io.IOException;   import java.io.OutputStream;   
  
-/**
- * 乱码的产生
- * */
+/**   * 乱码的产生   */   
 public class CharSetDemo2{
     public static void main(String[] args) throws IOException{
         File file = new File("d:" + File.separator + "hello.txt");

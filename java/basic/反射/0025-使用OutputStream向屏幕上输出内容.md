@@ -1,8 +1,6 @@
 使用OutputStream向屏幕上输出内容
 ```java  
-/**
- * 使用OutputStream向屏幕上输出内容 
- * */
+/**    * 使用OutputStream向屏幕上输出内容     */   
 import java.io.*;
 class hello {
     public static void main(String[] args) throws IOException {

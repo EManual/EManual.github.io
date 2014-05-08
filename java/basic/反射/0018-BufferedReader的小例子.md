@@ -5,13 +5,10 @@ BufferedReader buf = new BufferedReader(
 ```
 下面给一个实例：
 ```java  
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.BufferedReader;  import java.io.IOException;  import java.io.InputStreamReader;  
  
-/**
- * 使用缓冲区从键盘上读入内容
- * */
+/**  
+ * 使用缓冲区从键盘上读入内容   */
 public class BufferedReaderDemo{
     public static void main(String[] args){
         BufferedReader buf = new BufferedReader(
@@ -30,8 +27,6 @@ public class BufferedReaderDemo{
 【运行结果】：
 ```java  
 请输入内容
-
 dasdas
-
 你输入的内容是：dasdas
 ```

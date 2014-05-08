@@ -1,10 +1,6 @@
 【例子1】
 ```java  
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
- 
+import java.io.DataOutputStream;  import java.io.File;  import java.io.FileOutputStream;    import java.io.IOException;   
 public class DataOutputStreamDemo{
     public static void main(String[] args) throws IOException{
         File file = new File("d:" + File.separator + "hello.txt");
@@ -25,11 +21,7 @@ A B C
 现在我们在上面例子的基础上，使用DataInputStream读出内容。
 【例子2】
 ```java  
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
- 
+import java.io.DataInputStream;  import java.io.File;  import java.io.FileInputStream;  import java.io.IOException;  
 public class DataOutputStreamDemo{
     public static void main(String[] args) throws IOException{
         File file = new File("d:" + File.separator + "hello.txt");
@@ -38,8 +30,7 @@ public class DataOutputStreamDemo{
         int count = 0;
         char temp;
         while((temp = input.readChar()) != "C"){
-            ch[count++] = temp;
-        }
+            ch[count++] = temp;        }
         System.out.println(ch);
     }
 }

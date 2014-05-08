@@ -3,9 +3,7 @@
 举例说明（对下面的题用lock进行了改写）：
 ```java  
 package com.huawei.interview;
-
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.Lock;    import java.util.concurrent.locks.ReentrantLock;   
 
 public class ThreadTest {
 	private int j;

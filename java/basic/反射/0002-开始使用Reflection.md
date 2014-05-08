@@ -24,8 +24,7 @@ System.out.println(m[0].toString());
 模拟 instanceof 操作符
 得到类信息之后，通常下一个步骤就是解决关于 Class 对象的一些基本的问题。例如，Class.isInstance 方法可以用于模拟 instanceof 操作符：
 ```java  
-class A {
-
+class A {
 }
 
 public class instance1 {

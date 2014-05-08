@@ -1,16 +1,6 @@
 SequenceInputStream主要用来将2个流合并在一起，比如将两个txt中的内容合并为另外一个txt。下面给出一个实例：
-```java  
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.SequenceInputStream;
- 
-/**
- * 将两个文本文件合并为另外一个文本文件
- * */
+```java  import java.io.File;  import java.io.FileInputStream;  import java.io.FileOutputStream;  import java.io.IOException;  import java.io.InputStream;  import java.io.OutputStream;  import java.io.SequenceInputStream;  
+/**   * 将两个文本文件合并为另外一个文本文件   */  
 public class SequenceInputStreamDemo{
     public static void main(String[] args) throws IOException{
         File file1 = new File("d:" + File.separator + "hello1.txt");

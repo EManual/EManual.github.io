@@ -1,13 +1,7 @@
 先举一个压缩单个文件的例子吧：
 【例子1】
 ```java  
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import java.io.File;  import java.io.FileInputStream;   import java.io.FileOutputStream;   import java.io.IOException;  import java.io.InputStream;  import java.util.zip.ZipEntry;  import java.util.zip.ZipOutputStream;  
  
 public class ZipOutputStreamDemo1{
     public static void main(String[] args) throws IOException{
@@ -34,17 +28,8 @@ public class ZipOutputStreamDemo1{
 上面的这个例子测试的是压缩单个文件，下面的们来看看如何压缩多个文件。
 【例子2】
 ```java  
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
- 
-/**
- * 一次性压缩多个文件
- * */
+import java.io.File;  import java.io.FileInputStream;  import java.io.FileOutputStream;  import java.io.IOException;  import java.io.InputStream;  import java.util.zip.ZipEntry;  import java.util.zip.ZipOutputStream;   
+/**   * 一次性压缩多个文件   */  
 public class ZipOutputStreamDemo2{
     public static void main(String[] args) throws IOException{
         // 要被压缩的文件夹
@@ -74,13 +59,8 @@ public class ZipOutputStreamDemo2{
 大家自然想到，既然能压缩，自然能解压缩，在谈解压缩之前，我们会用到一个ZipFile类，先给一个这个例子吧。java中的每一个压缩文件都是可以使用ZipFile来进行表示的。
 【例子3】
 ```java  
-import java.io.File;
-import java.io.IOException;
-import java.util.zip.ZipFile;
- 
-/**
- * ZipFile演示
- * */
+import java.io.File;import java.io.IOException;import java.util.zip.ZipFile; 
+/**   * ZipFile演示     */  
 public class ZipFileDemo{
     public static void main(String[] args) throws IOException{
         File file = new File("d:" + File.separator + "hello.zip");
@@ -94,17 +74,9 @@ public class ZipFileDemo{
 现在我们呢是时候来看看如何加压缩文件了，和之前一样，先让我们来解压单个压缩文件（也就是压缩文件中只有一个文件的情况），我们采用前面的例子产生的压缩文件hello.zip
 【例子4】
 ```java  
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.io.File;  import java.io.FileOutputStream;   import java.io.IOException;   import java.io.InputStream;   import java.io.OutputStream;  import java.util.zip.ZipEntry;  import java.util.zip.ZipFile;  
  
-/**
- * 解压缩文件（压缩文件中只有一个文件的情况）
- * */
+/**   * 解压缩文件（压缩文件中只有一个文件的情况）   */  
 public class ZipFileDemo2{
     public static void main(String[] args) throws IOException{
         File file = new File("d:" + File.separator + "hello.zip");
@@ -126,19 +98,9 @@ public class ZipFileDemo2{
 当我们需要解压缩多个文件的时候，ZipEntry就无法使用了，如果想操作更加复杂的压缩文件，我们就必须使用ZipInputStream类。
 【例子5】
 ```java  
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
+import java.io.File;  import java.io.FileInputStream;  import java.io.FileOutputStream;   import java.io.IOException;   import java.io.InputStream;  import java.io.OutputStream;    import java.util.zip.ZipEntry;   import java.util.zip.ZipFile;    import java.util.zip.ZipInputStream;   
  
-/**
- * 解压缩一个压缩文件中包含多个文件的情况
- * */
+/**    * 解压缩一个压缩文件中包含多个文件的情况    */   
 public class ZipFileDemo3{
     public static void main(String[] args) throws IOException{
         File file = new File("d:" + File.separator + "zipFile.zip");

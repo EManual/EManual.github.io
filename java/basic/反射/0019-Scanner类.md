@@ -6,10 +6,8 @@ BufferedReader buf = new BufferedReader(
 【例子1】
 ```java  
 import java.util.Scanner;
- 
-/**
- * Scanner的小例子，从键盘读数据
- * */
+/**   * Scanner的小例子，从键盘读数据   *   
+ */  
 public class ScannerDemo{
     public static void main(String[] args){
         Scanner sca = new Scanner(System.in);
@@ -28,16 +26,12 @@ public class ScannerDemo{
 下面给一个使用Scanner类从文件中读出内容
 【例子2】
 ```java  
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
- 
-/**
- * Scanner的小例子，从文件中读内容
- * */
+import java.io.File;  import java.io.FileNotFoundException;  import java.util.Scanner;     
+/**  
+ * Scanner的小例子，从文件中读内容  
+ */  
 public class ScannerDemo{
     public static void main(String[] args){
- 
         File file = new File("d:" + File.separator + "hello.txt");
         Scanner sca = null;
         try{
