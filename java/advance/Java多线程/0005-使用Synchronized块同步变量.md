@@ -1,12 +1,10 @@
 我们可以通过synchronized块来同步特定的静态或非静态方法。要想实现这种需求必须为这些特性的方法定义一个类变量，然后将这些方法的代码用synchronized块括起来，并将这个类变量作为参数传入synchronized块。下面的代码演示了如何同步特定的类方法：
 ```java  
 package mythread;  
- 
 public class SyncThread extends Thread  
 {  
     private static String sync = “”;  
     private String methodType = “”;  
- 
     private static void method(String s)  
     {  
         synchronized (sync)  

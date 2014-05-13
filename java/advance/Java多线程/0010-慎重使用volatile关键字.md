@@ -1,19 +1,16 @@
 volatile关键字相信了解Java多线程的读者都很清楚它的作用。volatile关键字用于声明简单类型变量，如int、float、boolean等数据类型。如果这些简单数据类型声明为volatile，对它们的操作就会变成原子级别的。但这有一定的限制。例如，下面的例子中的n就不是原子级别的：
 ```java  
 package mythread;  
- 
 public class JoinThread extends Thread  
-{  
-    public static volatile int n = 0;  
+{      public static volatile int n = 0;  
     public void run()  
-    {  
+    {  
         for (int i = 0; i < 10; i++)  
             try 
         {  
                 n = n + 1;  
                 sleep(3); // 为了使运行结果更随机，延迟3毫秒  
- 
-            }  
+             }  
             catch (Exception e)  
             {  
             }  
@@ -21,8 +18,7 @@ public class JoinThread extends Thread
  
     public static void main(String[] args) throws Exception  
     {  
- 
-       Thread threads[] = new Thread[100];  
+        Thread threads[] = new Thread[100];  
         for (int i = 0; i < threads.length; i++)  
             // 建立100个线程  
             threads[i] = new JoinThread();  
@@ -42,12 +38,10 @@ n++;
 如果要想使这种情况变成原子操作，需要使用synchronized关键字，如上的代码可以改成如下的形式：
 ```java  
 package mythread;  
- 
 public class JoinThread extends Thread  
 {  
     public static int n = 0;  
- 
-    public static synchronized void inc()  
+     public static synchronized void inc()  
     {  
         n++;  
     }  
@@ -55,10 +49,9 @@ public class JoinThread extends Thread
     {  
         for (int i = 0; i < 10; i++)  
             try 
-            {  
+            {  
                 inc(); // n = n + 1 改成了 inc();  
-                sleep(3); // 为了使运行结果更随机，延迟3毫秒  
- 
+                sleep(3); // 为了使运行结果更随机，延迟3毫秒   
             }  
             catch (Exception e)  
             {  
@@ -67,7 +60,6 @@ public class JoinThread extends Thread
  
     public static void main(String[] args) throws Exception  
     {  
- 
         Thread threads[] = new Thread[100];  
         for (int i = 0; i < threads.length; i++)  
             // 建立100个线程  

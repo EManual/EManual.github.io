@@ -54,7 +54,6 @@ package mythread;
 public class Thread2 extends Thread  
 {  
     private String who;  
- 
     public void run()  
     {  
         System.out.println(who + “:” + this.getName());  

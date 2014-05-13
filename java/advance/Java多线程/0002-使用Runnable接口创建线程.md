@@ -5,7 +5,6 @@
 下面的代码演示了如何使用Runnable接口来创建线程：
 ```java  
 package mythread;  
-	 
 public class MyRunnable implements Runnable  
 {  
     public void run()  

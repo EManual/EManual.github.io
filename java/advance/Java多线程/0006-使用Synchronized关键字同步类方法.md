@@ -2,7 +2,7 @@
 ```java  
 public synchronized void run()  
 {  
-       
+
 } 
 ```
 从上面的代码可以看出，只要在void和public之间加上synchronized关键字，就可以使run方法同步，也就是说，对于同一个Java类的对象实例，run方法同时只能被一个线程调用，并当前的run执行完后，才能被其他的线程调用。即使当前线程执行到了run方法中的yield方法，也只是暂停了一下。由于其他线程无法执行run方法，因此，最终还是会由当前的线程来继续执行。先看看下面的代码：
@@ -57,12 +57,9 @@ Test test = new Test();
 在23种设计模式中的单件（Singleton）模式如果按传统的方法设计，也是线程不安全的，下面的代码是一个线程不安全的单件模式。
 ```java  
 package test;  
-
-// 线程不安全的Singleton模式  
-class Singleton  
+// 线程不安全的Singleton模式       class Singleton     
 {  
     private static Singleton sample;  
- 
     private Singleton()  
     {  
     }  
@@ -157,11 +154,9 @@ public static synchronized int n = 0;
 虽然使用synchronized关键字同步方法是最安全的同步方式，但大量使用synchronized关键字会造成不必要的资源消耗以及性能损失。虽然从表面上看synchronized锁定的是一个方法，但实际上synchronized锁定的是一个类。也就是说，如果在非静态方法method1和method2定义时都使用了synchronized，在method1未执行完之前，method2是不能执行的。静态方法和非静态方法的情况类似。但静态和非静态方法不会互相影响。看看如下的代码：
 ```java  
 package test;  
- 
 public class MyThread1 extends Thread  
 {  
 	public String methodName;  
-
 	public static void method(String s)  
 	{  
 		System.out.println(s);  
