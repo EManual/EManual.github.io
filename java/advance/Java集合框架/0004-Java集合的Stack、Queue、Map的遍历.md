@@ -3,15 +3,12 @@
 下面是常用的写法：
 一、Map的遍历
 ```java  
-import java.util.HashMap; 
-import java.util.Iterator; 
-import java.util.Map; 
-
-/** 
-* Map的遍历，这个遍历比较特殊，有技巧 
-* 
-* @author leizhimin 2009-7-22 15:15:34 
-*/ 
+import java.util.HashMap;    
+import java.util.Iterator;   
+import java.util.Map;     
+/** 
+* Map的遍历，这个遍历比较特殊，有技巧 
+*/   
 public class TestMap { 
         public static void main(String[] args) { 
                 Map<String, String> map = new HashMap<String, String>(); 
@@ -54,14 +51,9 @@ Process finished with exit code 0
 ``` 
 二、Queue的遍历
 ```java  
-import java.util.Queue; 
-import java.util.concurrent.LinkedBlockingQueue; 
-
-/** 
-* 队列的遍历 
-* 
-* @author leizhimin 2009-7-22 15:05:14 
-*/ 
+import java.util.Queue;    
+import java.util.concurrent.LinkedBlockingQueue;   
+/**     * 队列的遍历   */   
 public class TestQueue { 
         public static void main(String[] args) { 
                 Queue<Integer> q = new LinkedBlockingQueue<Integer>(); 
@@ -99,13 +91,7 @@ Process finished with exit code 0
 ```
 三、Stack的遍历
 ```java  
-import java.util.Stack; 
-
-/** 
-* 栈的遍历 
-* 
-* @author leizhimin 2009-7-22 14:55:20 
-*/ 
+import java.util.Stack;    /**      * 栈的遍历     */   
 public class TestStack { 
         public static void main(String[] args) { 
                 Stack<Integer> s = new Stack<Integer>(); 

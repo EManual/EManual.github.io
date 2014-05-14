@@ -6,9 +6,9 @@ HashMap是基于哈希表的Map接口的非同步实现。此实现提供所有�
 从上图中可以看出，HashMap底层就是一个数组结构，数组中的每一项又是一个链表。当新建一个HashMap的时候，就会初始化一个数组。
 源码如下：
 ```java   
-/** 
- * The table, resized as necessary. Length MUST Always be a power of two. 
- */  
+/**   
+ * The table, resized as necessary. Length MUST Always be a power of two.    
+ */     
 transient Entry[] table;  
   
 static class Entry<K,V> implements Map.Entry<K,V> {  
@@ -18,10 +18,10 @@ static class Entry<K,V> implements Map.Entry<K,V> {
     final int hash;  
     ……  
 }  
-[java] view plaincopy
-/** 
- * The table, resized as necessary. Length MUST Always be a power of two. 
- */  
+[java] view plaincopy 
+/**   
+ * The table, resized as necessary. Length MUST Always be a power of two.   
+ */    
 transient Entry[] table;  
   
 static class Entry<K,V> implements Map.Entry<K,V> {  

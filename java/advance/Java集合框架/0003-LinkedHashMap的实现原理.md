@@ -7,29 +7,18 @@ LinkedHashMap实现与HashMap的不同之处在于，后者维护着一个运行
 1) Entry元素：
 LinkedHashMap采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表。看源代码：
 ```java   
-/** 
- * 双向链表的表头元素。 
- */  
-private transient Entry<K,V> header;  
-  
-/** 
- * LinkedHashMap的Entry元素。 
- * 继承HashMap的Entry元素，又保存了其上一个元素before和下一个元素after的引用。 
- */  
+/**   
+ * 双向链表的表头元素。   
+ */  private transient Entry<K,V> header;  
+/**    * LinkedHashMap的Entry元素。     * 继承HashMap的Entry元素，又保存了其上一个元素before和下一个元素after的引用。    */    
 private static class Entry<K,V> extends HashMap.Entry<K,V> {  
     Entry<K,V> before, after;  
     ……  
 }  
 
-/** 
- * 双向链表的表头元素。 
- */  
-private transient Entry<K,V> header;  
-  
-/** 
- * LinkedHashMap的Entry元素。 
- * 继承HashMap的Entry元素，又保存了其上一个元素before和下一个元素after的引用。 
- */  
+/**  * 双向链表的表头元素。  */  private transient Entry<K,V> header;  
+/**    
+ * LinkedHashMap的Entry元素。     * 继承HashMap的Entry元素，又保存了其上一个元素before和下一个元素after的引用。     */    
 private static class Entry<K,V> extends HashMap.Entry<K,V> {  
     Entry<K,V> before, after;  
     ……  
@@ -41,8 +30,7 @@ private static class Entry<K,V> extends HashMap.Entry<K,V> {
 public LinkedHashMap(int initialCapacity, float loadFactor) {  
     super(initialCapacity, loadFactor);  
     accessOrder = false;  
-}  
-
+}  
 public LinkedHashMap(int initialCapacity, float loadFactor) {  
     super(initialCapacity, loadFactor);  
     accessOrder = false;  
@@ -56,12 +44,10 @@ public HashMap(int initialCapacity, float loadFactor) {
                                            initialCapacity);  
     if (initialCapacity > MAXIMUM_CAPACITY)  
         initialCapacity = MAXIMUM_CAPACITY;  
-    if (loadFactor <= 0 || Float.isNaN(loadFactor))  
-        throw new IllegalArgumentException("Illegal load factor: " +  
+    if (loadFactor <= 0 || Float.isNaN(loadFactor))          throw new IllegalArgumentException("Illegal load factor: " +  
                                            loadFactor);  
   
-    // Find a power of 2 >= initialCapacity  
-    int capacity = 1;  
+    // Find a power of 2 >= initialCapacity      int capacity = 1;  
     while (capacity < initialCapacity)  
         capacity <<= 1;  
   
@@ -69,8 +55,7 @@ public HashMap(int initialCapacity, float loadFactor) {
     threshold = (int)(capacity * loadFactor);  
     table = new Entry[capacity];  
     init();  
-}  
-
+}  
 public HashMap(int initialCapacity, float loadFactor) {  
     if (initialCapacity < 0)  
         throw new IllegalArgumentException("Illegal initial capacity: " +  
@@ -81,11 +66,9 @@ public HashMap(int initialCapacity, float loadFactor) {
         throw new IllegalArgumentException("Illegal load factor: " +  
                                            loadFactor);  
   
-    // Find a power of 2 >= initialCapacity  
-    int capacity = 1;  
+    // Find a power of 2 >= initialCapacity      int capacity = 1;  
     while (capacity < initialCapacity)  
         capacity <<= 1;  
-  
     this.loadFactor = loadFactor;  
     threshold = (int)(capacity * loadFactor);  
     table = new Entry[capacity];  
@@ -109,11 +92,9 @@ void init() {
 LinkedHashMap并未重写父类HashMap的put方法，而是重写了父类HashMap的put方法调用的子方法void addEntry(int hash, K key, V value, int bucketIndex) 和void createEntry(int hash, K key, V value, int bucketIndex)，提供了自己特有的双向链接列表的实现。
 ```java  
 void addEntry(int hash, K key, V value, int bucketIndex) {  
-    // 调用create方法，将新元素以双向链表的的形式加入到映射中。  
-    createEntry(hash, key, value, bucketIndex);  
+    // 调用create方法，将新元素以双向链表的的形式加入到映射中。      createEntry(hash, key, value, bucketIndex);  
   
-    // 删除最近最少使用元素的策略定义  
-    Entry<K,V> eldest = header.after;  
+    // 删除最近最少使用元素的策略定义      Entry<K,V> eldest = header.after;  
     if (removeEldestEntry(eldest)) {  
         removeEntryForKey(eldest.key);  
     } else {  
@@ -123,11 +104,9 @@ void addEntry(int hash, K key, V value, int bucketIndex) {
 }  
 
 void addEntry(int hash, K key, V value, int bucketIndex) {  
-    // 调用create方法，将新元素以双向链表的的形式加入到映射中。  
-    createEntry(hash, key, value, bucketIndex);  
+    // 调用create方法，将新元素以双向链表的的形式加入到映射中。      createEntry(hash, key, value, bucketIndex);  
   
-    // 删除最近最少使用元素的策略定义  
-    Entry<K,V> eldest = header.after;  
+    // 删除最近最少使用元素的策略定义      Entry<K,V> eldest = header.after;  
     if (removeEldestEntry(eldest)) {  
         removeEntryForKey(eldest.key);  
     } else {  
@@ -140,8 +119,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
     HashMap.Entry<K,V> old = table[bucketIndex];  
     Entry<K,V> e = new Entry<K,V>(hash, key, value, old);  
     table[bucketIndex] = e;  
-    // 调用元素的addBrefore方法，将元素加入到哈希、双向链接列表。  
-    e.addBefore(header);  
+    // 调用元素的addBrefore方法，将元素加入到哈希、双向链接列表。      e.addBefore(header);  
     size++;  
 }  
 
@@ -149,8 +127,7 @@ void createEntry(int hash, K key, V value, int bucketIndex) {
     HashMap.Entry<K,V> old = table[bucketIndex];  
     Entry<K,V> e = new Entry<K,V>(hash, key, value, old);  
     table[bucketIndex] = e;  
-    // 调用元素的addBrefore方法，将元素加入到哈希、双向链接列表。  
-    e.addBefore(header);  
+    // 调用元素的addBrefore方法，将元素加入到哈希、双向链接列表。      e.addBefore(header);  
     size++;  
 }  
 
@@ -172,22 +149,18 @@ private void addBefore(Entry<K,V> existingEntry) {
 LinkedHashMap重写了父类HashMap的get方法，实际在调用父类getEntry()方法取得查找的元素后，再判断当排序模式accessOrder为true时，记录访问顺序，将最新访问的元素添加到双向链表的表头，并从原来的位置删除。由于的链表的增加、删除操作是常量级 的，故并不会带来性能的损失。
 ```java  
 public V get(Object key) {  
-    // 调用父类HashMap的getEntry()方法，取得要查找的元素。  
-    Entry<K,V> e = (Entry<K,V>)getEntry(key);  
+    // 调用父类HashMap的getEntry()方法，取得要查找的元素。      Entry<K,V> e = (Entry<K,V>)getEntry(key);  
     if (e == null)  
         return null;  
-    // 记录访问顺序。  
-    e.recordAccess(this);  
+    // 记录访问顺序。      e.recordAccess(this);  
     return e.value;  
 }  
 
 public V get(Object key) {  
-    // 调用父类HashMap的getEntry()方法，取得要查找的元素。  
-    Entry<K,V> e = (Entry<K,V>)getEntry(key);  
+    // 调用父类HashMap的getEntry()方法，取得要查找的元素。      Entry<K,V> e = (Entry<K,V>)getEntry(key);  
     if (e == null)  
         return null;  
-    // 记录访问顺序。  
-    e.recordAccess(this);  
+    // 记录访问顺序。      e.recordAccess(this);  
     return e.value;  
 }  
  

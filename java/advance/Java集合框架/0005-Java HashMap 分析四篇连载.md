@@ -4,9 +4,9 @@ HashMap实际上是一个数组，数组里面的每个元素都是一个链表�
 2.将新元素放入该数组位置的链表中。
 先来看一下数组的定义：
 ```java  
-/** 
-     * The table, resized as necessary. Length MUST Always be a power of two. 
-     */  
+	 /**     
+     * The table, resized as necessary. Length MUST Always be a power of two.   
+     */     
     transient Entry[] table;  
 ```
 这是一个数组，transient关键字告诉我们它不会参与序列化。既然是一个数组，总有数目上限，也就意味着如果存入HashMap的元素太多，导致数组大小不能够存放所有的链表的时候，数组大小必须要能够调整。所以首先来考察一下数组容量的相关算法。
@@ -18,9 +18,9 @@ static class Entry<K,V> implements Map.Entry<K,V> {
         Entry<K,V> next;  
         final int hash;  
   
-        /** 
-         * Creates new entry. 
-         */  
+        /**    
+         * Creates new entry.    
+         */    
         Entry(int h, K k, V v, Entry<K,V> n) {  
             value = v;  
             next = n;  
