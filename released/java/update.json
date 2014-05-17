@@ -1,6 +1,6 @@
 {
     "versionCode":4,
     "versionName":"1.1.2",
-    "description":"1.更正平板右上角清空标志出现黑色的文字‘清空’\n2.修复点击收藏会崩溃",
+    "description":"1.更正平板右上角清空标志出现黑色的文字‘清空’\n2.修复点击收藏会崩溃\n3.本次更新安装需要先卸载后安装",
     "url":"http://emanual.github.io/released/java/EManual_for_Java.apk"
 }
