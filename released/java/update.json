@@ -1,6 +1,6 @@
 {
-    "versionCode":3,
-    "versionName":"1.1.1",
-    "description":"1.支持语法高亮\n2.修复Android 4.2或以上系统无法查看文章",
+    "versionCode":4,
+    "versionName":"1.1.2",
+    "description":"1.更正平板右上角清空标志出现黑色的文字‘清空’\n2.修复点击收藏会崩溃",
     "url":"http://emanual.github.io/released/java/EManual_for_Java.apk"
 }
