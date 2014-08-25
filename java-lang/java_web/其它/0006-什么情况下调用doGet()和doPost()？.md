@@ -1,1 +1,0 @@
-Jsp页面中的FORM标签里的method属性为get时调用doGet()，为post时调用doPost()。
