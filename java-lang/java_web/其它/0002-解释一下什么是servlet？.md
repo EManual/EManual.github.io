@@ -1,0 +1,4 @@
+Servlet是一种独立于平台和协议的服务器端的Java技术，可以用来生成动态的Web页面。与传统的CGI（计算机图形接口）和许多其他类似CGI技术相比，Servlet具有更好的可移植性、更强大的功能，更少的投资，更高的效率，更好的安全性等特点。
+Servlet是使用Java Servlet应用程序接口（API）及相关类和方法的Java程序。Java语言能够实现的功能，Servlet基本上都能实现（除了图形界面之外）。Servlet主要用于处理客户端传来的Http请求，并返回一个响应。通常所说的Servlet就是指HttpServlet，用于处理Http请求，其能够处理的请求有doGet()、doPost()、service()等方法。在开发Servlet时，可以直接继承javax.servlet.http.HttpServlet。
+Servlet需要在web.xml中进行描述，例如：映射执行Servlet的名字，配置Servlet类、初始化参数，进行安全配置、URL映射和设置启动的优先权等。Servlet不仅可以生成HTML脚本输出，也可以生成二进制表单输出。
+Servlet应用范围很广泛，我们现在用的很多流行的框架技术，其最基本的代码离不开Servelt的支持。比如我所熟悉的SSH框架，Spring容器启动时，要在web.xml中装载Spring容器的ActionContext类来初始化Spring的一些参数，如进行依赖注入、数据库表的映射、初始化系统的安全配置设置read等属性等一些相关操作。

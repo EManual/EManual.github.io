@@ -1,0 +1,3 @@
+当你要传递普通的数据类型给下一个页面时，你在下一个页面中就可以用getParameter()方法来获得上一个页面传递过来的数据了！（普通的数据类型是指int,float,double,string等在Java中常用的基本类型，但是在下一个页面中你用getParameter()方法获得的值永远只能时String类型的，你可以把String类型转换为你所需要的类型！）
+当你要传递一个对象给下一个页面时，你就要使用getAttribut()方法了！如：你要把一个List或Map传递到下一个页面，这时你就必须要用setAttribut()和getAttribut()方法传递数据了！
+从更深层次的考虑，getParameter()方法传递数据，只会从WEB客户端传递到WEB服务器，代表HTTP请求数据，getParameter()方法返回String类型的数据！setAttribut()和getAttribut()方法传递的数据只会在WEB服务器内部，在具有转发关系的WEB组件之间传递，这两个方法能设置Object类型的共享数据！
