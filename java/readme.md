@@ -1,3 +1,13 @@
+usage
+===
+1. 把所要的章节，复制到java/test/目录下，运行cleanup.py 去清除标签
+2. 运行make2.py生成章节信息
+
+record
+===
+
+Aug 25,2014 java/pluzzl ok
+
 May 15, 2014 java/arithmetic 排序算法二次排版、编程实践基本无问题
 
 May 15, 2014 java/database 基本无问题，无java代码
