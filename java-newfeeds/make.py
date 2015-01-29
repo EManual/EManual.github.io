@@ -10,6 +10,7 @@ import re
 import json
 import copy
 import time
+import sys
 
 
 #config
@@ -28,7 +29,10 @@ def generation(page, l, cwd):
         res = []
         if len(l) > 0:
             for f_name in l:
-                res.append(f_name.decode('gbk'))
+                if sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
+                    res.append(f_name.decode('gbk'))
+                else:
+                    res.append(f_name)
         f.write(json.dumps({'result': res}))
 
 
