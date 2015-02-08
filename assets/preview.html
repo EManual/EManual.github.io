@@ -89,7 +89,7 @@
             }
             return null;
         }
-        var article_path = get_article_path()
+        var article_path = decodeURIComponent(get_article_path()).replace('+',' ');
         if (article_path != null) {
             $.get(article_path, function (result) {
                 hljs.initHighlightingOnLoad();
