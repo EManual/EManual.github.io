@@ -1,6 +1,6 @@
 {
-    "versionCode":5,
-    "versionName":"1.2.0",
-    "description":"1.新增模块`谜题` 大量的Java编程技巧\n2.加入错误统计\n3.在不影响用户体验的情况下加入广告，以弥补高昂的服务器费用,望谅解",
+    "versionCode":6,
+    "versionName":"1.3.0",
+    "description":"1.修复网络差时，查看文章可能会崩溃\n2.修复网络差的时，没有错误提示信息\n3.修复文章加载时菜单闪烁\n4.修复部分文章分享失败\n5.更新渲染模板/机制",
     "url":"http://emanual.github.io/released/java/EManual_for_Java.apk"
 }
