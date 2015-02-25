@@ -7,7 +7,7 @@ def fix_1():
     """
       在java_ee那个表没有title=java_ee，importance =9
     """
-    con = sqlite3.connect('source.db')
+    con = sqlite3.connect('source_1.db')
     c = con.cursor()
     sql_get_all = 'select * from java_ee'
     sql_inset_one = 'insert into java_ee values(?,?,?,?,?,?)'

@@ -1,4 +1,4 @@
-#endcoding:utf-8
+# endcoding:utf-8
 import sqlite3
 import os
 import json
@@ -15,9 +15,25 @@ target_config = {
 #   types   :对应的数据库的表
 #   kind    ：文件目录名称
 
-types = ['java_basic', 'design_pattern', 'java_advance', 'database', 'arithmetic', 'framework', 'java_ee', 'java_web']
-kinds = ['basic', 'pattern', 'advance', 'database', 'arithmetic', 'framework', 'java_ee', 'java_web']
-program_language = 'java-lang'
+# types = ['java_basic', 'design_pattern', 'java_advance', 'database', 'arithmetic', 'framework', 'java_ee', 'java_web']
+# kinds = ['basic', 'pattern', 'advance', 'database', 'arithmetic', 'framework', 'java_ee', 'java_web']
+# program_language = 'java-lang'
+
+# Android
+
+kinds = types = ['android_advance',
+         'android_basic',
+         'android_component',
+         'android_datastorage',
+         'android_device',
+         'android_games',
+         'android_interview',
+         'android_multimedia',
+         'android_network',
+         'android_source',
+         'android_userinterface']
+# kinds = ['advance', 'basic']
+program_language = 'android-tmp'
 
 
 def get_lang_root_dir():
@@ -31,21 +47,9 @@ def remove_all_file():
     for kind in kinds:
         dirtory = os.path.join(os.path.split(os.getcwd())[0], program_language, kind)
         print "on dirtory -->", dirtory
-        for p in os.listdir(dirtory):
-            if os.path.exists(os.path.join(dirtory, p)):
-                print os.path.join(dirtory, p), " exist!"
-                for f in os.listdir(os.path.join(dirtory, p)):
-                    try:
-                        print "remove:", os.path.join(dirtory, p, f)
-                        os.remove(os.path.join(dirtory, p, f))
-                    except WindowsError as e:
-                        print e.message
-            try:
-                if os.path.isdir(os.path.join(dirtory, p)):
-                    print "remove:", os.path.join(dirtory, p)
-                    os.removedirs(os.path.join(dirtory, p))
-            except WindowsError as e:
-                print e.message
+        os.system('rm -rf %s' % dirtory)
+        os.system('mkdir %s ' % dirtory)
+
     print "remove finish"
 
 
@@ -72,6 +76,9 @@ def gerate_file(index, title, content, kind, subKind):
     """
        生成目标文件(.md)
     """
+    # 文件名不允许/
+    if '/' in title:
+        title = title.replace('/', ',')
     filename = gerate_filename(index, title, kind, subKind)
     print 'prepare to gerate_file -->', filename
     with open(filename, mode='w') as f:
@@ -101,7 +108,7 @@ def create_kind_info(kind, result):
     path_name = os.path.join(get_lang_root_dir(), kind)
     print "----------------------"
     print "create info data in -->", path_name
-    with open(os.path.join(path_name , 'info.json'),mode='w') as f:
+    with open(os.path.join(path_name, 'info.json'), mode='w') as f:
         f.write(json_string)
 
 
@@ -111,6 +118,7 @@ def create_md():
     index = 0
     for t in types:
         subkinds = []
+        print 'select title,content,importance from ' + t
         for row in cursor.execute('select title,content,importance from ' + t):
             # print row[0], '--importance===', row[2],
             if row[2] == 9:
@@ -124,7 +132,7 @@ def create_md():
                 i += 1
         #表遍历完毕
         print subkinds
-        create_kind_info(kinds[index], subkinds)
+        # create_kind_info(kinds[index], subkinds)
         index += 1
     con.close()
     print "create_md finish"
@@ -132,12 +140,14 @@ def create_md():
 
 def create_root_file():
     root = os.path.join(os.path.split(os.getcwd())[0], program_language)
+    if not os.path.exists(root):
+        os.mkdir(root)
     for k in kinds:
         if not os.path.exists(os.path.join(root, k)):
             os.mkdir(os.path.join(root, k))
 
 
 if __name__ == '__main__':
-    create_root_file();
+    create_root_file()
     remove_all_file()
     create_md()
