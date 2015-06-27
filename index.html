@@ -1,163 +1,134 @@
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home EManual</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <title>编程助手</title>
-    <link rel="shortcut icon" href="./static/images/favicon.png">
+    <!-- Le styles -->
+    <link href="./assets/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 20px;
+            padding-bottom: 40px;
+        }
 
-    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link href="./static/css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "//hm.baidu.com/hm.js?6c69102deeb4dd0834948ef824ba3d02";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+        /* Custom container */
+        .container-narrow {
+            margin: 0 auto;
+            max-width: 700px;
+        }
 
+        .container-narrow > hr {
+            margin: 30px 0;
+        }
 
+        /* Main marketing message and sign up button */
+        .jumbotron {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .jumbotron h1 {
+            font-size: 72px;
+            line-height: 1;
+        }
+
+        .jumbotron .btn {
+            font-size: 21px;
+            padding: 14px 24px;
+        }
+
+        /* Supporting marketing content */
+        .marketing {
+            margin: 60px 0;
+        }
+
+        .marketing p + h4 {
+            margin-top: 28px;
+        }
+    </style>
+    <link href="./assets/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <link type="text/css" rel="stylesheet" href="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/style.css">
+    <script type="text/javascript" charset="utf-8"
+            src="chrome-extension://cpngackimfmofbokmjmljamhdncknpmg/js/page_context.js"></script>
 </head>
 
-<body class=" home static">
-    <header class="has-cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-10 col-sm-6 col-md-4">
-                    <a class="logo" href="/"></a>
-                </div>
-                <div class="col-xs-2 col-sm-6 col-md-8">
-                    <nav class="desktop-menu">
-                        <a href="http://www.iemanual.com/blog" onclick="_hmt.push(['_trackEvent','goBlog','click',])">Blog</a>
-                    </nav>
-                </div>
-            </div>
+<body screen_capture_injected="true">
+
+<div class="container-narrow">
+
+    <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="https://github.com/EManual">Projects</a></li>
+            <li><a href="#" style="visibility: hidden">About</a></li>
+        </ul>
+        <h3 class="muted">EManual</h3>
+    </div>
+
+    <hr>
+
+    <div class="jumbotron">
+        <h1>Java学习助手</h1>
+
+        <p class="lead">"你拉屎的时候一定要用Java学习助手!"</p>
+        <a id="download" class="btn btn-large btn-success"
+           href="released/java/EManual_for_Java.apk">Download
+            <small>&nbsp; V1.3.0 &nbsp; 1.2MB</small>
+        </a>
+    </div>
+
+    <hr>
+
+    <div class="row-fluid marketing">
+        <div class="span6">
+            <h4>Goal</h4>
+
+            <p>利用琐碎的时间去学习</p>
+
+            <h4>Open Source</h4>
+
+            <p>基于Apache License Version 2.0</p>
+
+            <h4>Free</h4>
+
+            <p>简化Java厚书,快餐式阅读</p>
         </div>
-    </header>
 
-    <section class="cover">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-7">
-                    <div class="catch-phrase">
-                        <h1>人人编程 开拓你的思考方式</h1>
-                        <h1>轻如蝉翼 随时随地学习编程</h1>
-                        <p>
-                            <a class="btn btn-lg " href="http://emanual.github.io/md-release/dist/EManual.apk"
-                            onclick="_hmt.push(['_trackEvent','downloadFromHomePage','click',])">下载最新版
-                                <span class="ion-social-android"></span><small id="text-version"> v2.1.1</small></a>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-5 hidden-xs iphone">
-                    <img class="img-responsive" src="./static/images/iphone.png" alt="iPhone cover image" />
-                </div>
-            </div>
+        <div class="span6">
+            <h4>Maintain</h4>
+
+            <p>没有比这更让人尖叫，至少维护一年</p>
+
+            <h4>Thanks</h4>
+
+            <p>资源文件托管在Github </p>
+
+            <h4>Bug & Enhancement</h4>
+
+            <p>tonjayin@gmail.com</p>
+
+            <a href="https://github.com/EManual"><p>Project Home Page</p></a>
         </div>
-    </section>
+    </div>
 
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-offset-1 col-sm-10">
-                    <div class="heading-text">
-                        <h1>产品优势</h1>
-                        <p>MOOC提供免费视频教程，而我们为你精选知识点助力快速学习</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="tiles clearfix">
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="icon">&#xf1fa; </div>
-                        <h2>APP</h2>
-                        <p></p>
-                        <p>随时随地学习</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="icon">&#xf407;</div>
-                        <h2>精选编程资料</h2>
-                        <p></p>
-                        <p>按需下载 持续维护</p>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <div class="icon">&#xf4f2;</div>
-                        <h2>免费使用</h2>
-                        <p></p>
-                        <p>零成本获得知识</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <hr>
 
-    <section class="gradient">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-offset-1 col-sm-10">
-                    <div class="heading-text">
-                        <h1>多种编程语言、平台</h1>
-                        <p>已上线Java Android PHP Python</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="projects text-center clearfix">
-                    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-4 col-md-3 ">
-                        <div class="project">
-                            <div class="thumbnail animated">
-                                <img src="./static/images/java.png" alt="FeedHub project thumbnail"
-                                onclick="_hmt.push(['_trackEvent','Category','click','Java'])" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-4 col-md-3 ">
-                        <div class="project">
-                            <div class="thumbnail animated">
-                                <img src="./static/images/android.png" alt="Pushh project thumbnail"
-                                onclick="_hmt.push(['_trackEvent','Category','click','Android'])" />
-                            </div>
+    <div class="footer">
+        <p>© EManual Jayin Ton 2014</p>
+    </div>
 
-                        </div>
-                    </div>
-                    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-4 col-md-3 hidden-xs">
-                        <div class="project">
-                            <div class="thumbnail animated">
-                                <img src="./static/images/php.png" alt="Dareboost project thumbnail" 
-                                onclick="_hmt.push(['_trackEvent','Category','click','PHP'])"/>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col-xs-offset-1 col-xs-10 col-sm-offset-0 col-sm-4 col-md-3 hidden-sm hidden-xs">
-                        <div class="project">
-                            <div class="thumbnail animated">
-                                <img src="./static/images/python.png" alt="Evotion project thumbnail" 
-                                onclick="_hmt.push(['_trackEvent','Category','click','Python'])"/>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12  text-center">
-                    <p>All right reserved • EManual 2014 </p>
-                </div>
-            </div>
-        </div>
-    </footer>
+</div>
+<script src="./assets/js/jquery.js"></script>
 
 </body>
-
 </html>
